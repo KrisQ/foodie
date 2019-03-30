@@ -15,7 +15,7 @@
       <div class="nav-flex-grow"></div>
       <el-menu-item v-if="!$auth.check()" index="/login">Login 👩‍🍳</el-menu-item>
       <el-menu-item v-if="!$auth.check()" index="/register">Register 👨‍🍳</el-menu-item>
-      <el-menu-item v-if="$auth.check()" index="/dashboard">Dashboard 🍰</el-menu-item>
+      <el-menu-item v-if="$auth.check()" index="/dashboard">My Recipes 📝</el-menu-item>
       <el-menu-item v-if="$auth.check()" @click="logout">Logout 👋</el-menu-item>
     </el-menu>
   </div>

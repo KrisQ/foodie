@@ -4,6 +4,7 @@ import axios from 'axios';
 import VueAxios from 'vue-axios';
 import App from './App.vue';
 import Dashboard from './components/Dashboard.vue';
+import CreateRecipe from './components/CreateRecipe.vue';
 import Home from './components/Home.vue';
 import Register from './components/Register.vue';
 import Login from './components/Login.vue';
@@ -13,6 +14,8 @@ import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
 Vue.use(ElementUI);
+
+// Vue.component('recipes', require('./components/Recipes.vue'));
 
 axios.defaults.baseURL = 'http://localhost/foodie/public/api';
 
@@ -43,6 +46,14 @@ const router = new VueRouter({
             path: '/dashboard',
             name: 'dashboard',
             component: Dashboard,
+            meta: {
+                auth: true
+            }
+        },
+        {
+            path: '/createRecipe',
+            name: 'createRecipe',
+            component: CreateRecipe,
             meta: {
                 auth: true
             }

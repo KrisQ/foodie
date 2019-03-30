@@ -15,7 +15,7 @@
         </p>
       </el-alert>
 
-      <el-form ref="form" label-width="120px" v-if="!success" method="post">
+      <el-form ref="form" v-if="!success" method="post">
         <el-form-item label="Name">
           <el-input type="text" id="name" placeholder="John" v-model="name" required></el-input>
           <span class="help-block" v-if="error && errors.name">{{ errors.name }}</span>
@@ -29,7 +29,7 @@
           <el-input type="password" id="password" v-model="password" required></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click.prevent="register">Sign In</el-button>
+          <el-button :style="{width: '100%'}" type="primary" @click.prevent="register">Sign In</el-button>
         </el-form-item>
       </el-form>
     </el-card>

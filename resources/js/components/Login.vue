@@ -8,7 +8,7 @@
         <p>There was an error, unable to sign in with those credentials.</p>
       </el-alert>
 
-      <el-form ref="form" label-width="120px" method="post">
+      <el-form ref="form" method="post">
         <el-form-item label="E-mail">
           <el-input type="email" id="email" placeholder="user@example.com" v-model="email" required></el-input>
         </el-form-item>
@@ -16,7 +16,7 @@
           <el-input type="password" id="password" v-model="password" required></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click.prevent="onSubmit">Sign In</el-button>
+          <el-button :style="{width: '100%'}" type="primary" @click.prevent="onSubmit">Sign In</el-button>
         </el-form-item>
       </el-form>
     </el-card>
