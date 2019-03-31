@@ -18,6 +18,12 @@ class RecipeController extends Controller
         return $recipes;
     }
 
+    public function readOne($id){
+        $recipe = Recipe::findOrFail($id);
+        return $recipe;
+    }
+
+
     public function store(Request $request)
     {
         $recipe = new Recipe;
@@ -52,4 +58,47 @@ class RecipeController extends Controller
             'data' => $recipe
            ], 200);
      }
+     public function edit(Request $request, $id)
+     {
+         $recipe = Recipe::findOrFail($id);
+         $recipe->title = $request->title;
+         $recipe->author = $request->author;
+         $recipe->ingredients = $request->ingredients;
+         $recipe->instructions = $request->instructions;
+         $recipe->categories = $request->category;
+ 
+         if($request->image != '' && $request->has_new_image == "1"){
+             $exploded = explode(',', $request->image);
+             $decoded = base64_decode($exploded[1]);
+             if(str_contains($exploded[0], 'jpg')){
+                 $extention = 'jpg';
+             } else if (str_contains($exploded[0], 'jpeg')) {
+                 $extention = 'jpeg';
+             } else {
+                 $extention = 'png';
+             }
+             $fileName = str_random().'.'.$extention;
+             $path = public_path().'/recipeImages/'.$fileName;
+             if($extention){
+                 file_put_contents($path, $decoded);
+                 $recipe->photo = 'recipeImages/'.$fileName;
+             }
+         }
+ 
+         $recipe->save();
+         return response([
+             'status' => 'success',
+             'data' => $recipe
+            ], 200);
+      }
+
+      public function destroy($id){
+        $recipe = Recipe::findOrFail($id);
+        $recipe->delete();
+        return response([
+            'status' => 'success',
+           ], 200);
+
+      }
+ 
 }

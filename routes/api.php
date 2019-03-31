@@ -17,7 +17,10 @@ Route::post('auth/login', 'AuthController@login');
 
 Route::get('categories', 'CategoryController@getAll');
 Route::post('createRecipe', 'RecipeController@store');
+Route::post('editRecipe/{id}', 'RecipeController@edit');
+Route::post('deleteRecipe/{id}', 'RecipeController@destroy');
 Route::get('getRecipes/{filter?}/{param?}', 'RecipeController@read');
+Route::get('getRecipe/{id}', 'RecipeController@readOne');
 
 Route::group(['middleware' => 'jwt.auth'], function(){
   Route::get('auth/user', 'AuthController@user');

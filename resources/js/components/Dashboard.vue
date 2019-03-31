@@ -4,6 +4,7 @@
       <h3 :style="{flexGrow: '1'}">My Recipes 📝</h3>
       <el-button type="default" @click="goToCreateRecipe">Create a Recipe! 🚀</el-button>
     </div>
+    <br>
     <recipes :filter="'author'"></recipes>
   </div>
 </template>

@@ -1,7 +1,8 @@
 <template>
   <el-card class="box-card medium-box">
     <div slot="header" class="clearfix">
-      <h4 :style="{textAlign: 'center'}">New Recipe</h4>
+      <h4 v-if="!$route.params.id" :style="{textAlign: 'center'}">New Recipe</h4>
+      <h4 v-else :style="{textAlign: 'center'}">Edit Recipe</h4>
     </div>
     <el-alert v-if="error" type="error">
       <p>All fields are required 😕</p>
@@ -109,12 +110,19 @@
         </el-col>
       </el-row>
 
-      <el-form-item>
+      <el-form-item v-if="!$route.params.id">
         <el-button
           type="primary"
           @click.prevent="onSubmit"
           :style="{width: '100%'}"
         >Add Your Recipe !</el-button>
+      </el-form-item>
+      <el-form-item v-else>
+        <el-button
+          type="primary"
+          @click.prevent="onSubmitEdit($route.params.id)"
+          :style="{width: '100%'}"
+        >Update Recipe !</el-button>
       </el-form-item>
     </el-form>
   </el-card>
@@ -153,11 +161,24 @@ export default {
       instructionInput: "",
       error: false,
       message: "",
-      img_upload: ""
+      img_upload: "",
+      has_new_image: "0"
     };
   },
   mounted() {
     this.getCategories();
+    if (this.$route.params.id) {
+      axios
+        .get(`getRecipe/${this.$route.params.id}`)
+        .then(res => {
+          this.title = res.data.title;
+          this.ingredients = JSON.parse(res.data.ingredients);
+          this.instructions = JSON.parse(res.data.instructions);
+          this.cat = res.data.categories;
+          this.img_upload = res.data.photo;
+        })
+        .catch(err => console.log(err));
+    }
   },
   methods: {
     onSubmit() {
@@ -178,6 +199,26 @@ export default {
           this.error = true;
         });
     },
+    onSubmitEdit(id) {
+      axios
+        .post(`editRecipe/${id}`, {
+          title: this.title,
+          author: this.$auth.user().id,
+          ingredients: JSON.stringify(this.ingredients),
+          instructions: JSON.stringify(this.instructions),
+          image: this.img_upload,
+          category: this.cat,
+          has_new_image: this.has_new_image
+        })
+        .then(data => {
+          this.$router.push("/dashboard");
+        })
+        .catch(error => {
+          console.log(error);
+          this.error = true;
+        });
+    },
+
     getCategories() {
       axios
         .get("categories")
@@ -229,6 +270,7 @@ export default {
           console.log(this.img_upload);
         };
       }
+      this.has_new_image = "1";
       this.message = "";
     }
   }

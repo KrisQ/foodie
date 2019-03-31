@@ -8,6 +8,7 @@ import CreateRecipe from './components/CreateRecipe.vue';
 import Home from './components/Home.vue';
 import Register from './components/Register.vue';
 import Login from './components/Login.vue';
+import Recipe from './components/Recipe.vue';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
@@ -51,12 +52,17 @@ const router = new VueRouter({
             }
         },
         {
-            path: '/createRecipe',
+            path: '/createRecipe/:id?',
             name: 'createRecipe',
             component: CreateRecipe,
             meta: {
                 auth: true
             }
+        },
+        {
+            path: '/recipe/:id',
+            name: 'recipe',
+            component: Recipe
         }
     ]
 });
