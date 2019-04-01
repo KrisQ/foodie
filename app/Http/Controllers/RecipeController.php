@@ -7,11 +7,20 @@ use App\Recipe;
 
 class RecipeController extends Controller
 {
-    public function read($filter = 'all', $param = null){
+    public function read($filter = 'all', $category = 'All', $param = null){
         if($filter == 'all'){
-            $recipes = Recipe::all();
+            if($category != 'All'){
+                $recipes = Recipe::where('categories', $category)->paginate(6);
+            } else {
+                $recipes = Recipe::paginate(6);
+            }
         } else if ($filter == 'author'){
-            $recipes = Recipe::where('author', $param)->get();
+            if($category != 'All'){
+                $recipes = Recipe::where('author', $param)->where('category', $category)->paginate(6);
+
+            } else {
+                $recipes = Recipe::where('author', $param)->paginate(6);
+            }
         } else {
             $recipes = [];
         }

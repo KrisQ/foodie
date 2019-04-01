@@ -10,7 +10,7 @@
     <el-row :gutter="20">
       <el-col :xs="24" :sm="12" :md="8" class="mb-20">
         <h4>Ingredients:</h4>
-        <ul v-if="recipe.ingredients.length > 0">
+        <ul v-if="recipe.ingredients && recipe.ingredients.length > 0">
           <li v-for="(ingredient, i) in recipe.ingredients" :key="i">
             <i>{{ingredient}}</i>
           </li>
@@ -18,7 +18,7 @@
       </el-col>
       <el-col :xs="24" :sm="12" :md="8" class="mb-20">
         <h4>Instructions:</h4>
-        <ul v-if="recipe.instructions.length > 0">
+        <ul v-if="recipe.instructions && recipe.instructions.length > 0">
           <li v-for="(instruction, i) in recipe.instructions" :key="i">
             <i>{{instruction}}</i>
           </li>

@@ -11,12 +11,19 @@
       text-color="#fff"
       active-text-color="#ffd04b"-->
 
-      <el-menu-item index="/">Home 🥐</el-menu-item>
+      <el-menu-item index="/">Home 🔪</el-menu-item>
       <div class="nav-flex-grow"></div>
-      <el-menu-item v-if="!$auth.check()" index="/login">Login 👩‍🍳</el-menu-item>
-      <el-menu-item v-if="!$auth.check()" index="/register">Register 👨‍🍳</el-menu-item>
-      <el-menu-item v-if="$auth.check()" index="/dashboard">My Recipes 📝</el-menu-item>
-      <el-menu-item v-if="$auth.check()" @click="logout">Logout 👋</el-menu-item>
+      <el-menu-item class="hidden-xs-only" v-if="!$auth.check()" index="/login">Login 👩‍🍳</el-menu-item>
+      <el-menu-item class="hidden-xs-only" v-if="!$auth.check()" index="/register">Register 👨‍🍳</el-menu-item>
+      <el-menu-item class="hidden-xs-only" v-if="$auth.check()" index="/dashboard">My Recipes 📝</el-menu-item>
+      <el-menu-item class="hidden-xs-only" v-if="$auth.check()" @click="logout">Logout 👋</el-menu-item>
+      <el-submenu class="hidden-sm-and-up" index="1">
+        <template slot="title">Menu</template>
+        <el-menu-item v-if="!$auth.check()" index="/login">Login 👩‍🍳</el-menu-item>
+        <el-menu-item v-if="!$auth.check()" index="/register">Register 👨‍🍳</el-menu-item>
+        <el-menu-item v-if="$auth.check()" index="/dashboard">My Recipes 📝</el-menu-item>
+        <el-menu-item v-if="$auth.check()" @click="logout">Logout 👋</el-menu-item>
+      </el-submenu>
     </el-menu>
   </div>
 </template>

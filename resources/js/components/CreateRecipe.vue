@@ -28,7 +28,6 @@
               v-model="ingresdientsInput"
               id="ingresdientsInput"
               placeholder="Butter"
-              required
             >
               <el-button
                 slot="append"
@@ -57,7 +56,6 @@
               v-model="instructionInput"
               id="instructionInput"
               placeholder="Add butter"
-              required
             >
               <el-button
                 slot="append"
@@ -239,11 +237,10 @@ export default {
       this.ingredients = this.ingredients.filter(ingredient =>
         ingredient === i ? false : true
       );
-      this.instructionInput = "";
     },
     addInstruction(instruction) {
       instruction.length > 0 && this.instructions.push(instruction);
-      this.instructionsInput = "";
+      this.instructionInput = "";
     },
     removeInstruction(i) {
       console.log(i);

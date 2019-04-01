@@ -11,6 +11,7 @@ import Login from './components/Login.vue';
 import Recipe from './components/Recipe.vue';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import 'element-ui/lib/theme-chalk/display.css';
 
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
