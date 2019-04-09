@@ -1,7 +1,5 @@
 # Foodie Project
 
-## Made With:
-
 ### lepetitfoudie.com
 
 lepetitfoudie.com is a website for amateur home cooks to store their recipes and explore other's.
