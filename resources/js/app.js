@@ -19,7 +19,7 @@ Vue.use(ElementUI);
 
 // Vue.component('recipes', require('./components/Recipes.vue'));
 
-axios.defaults.baseURL = 'http://localhost/foodie/public/api';
+axios.defaults.baseURL = 'http://lepetitfoudie.com/api';
 
 const router = new VueRouter({
     routes: [

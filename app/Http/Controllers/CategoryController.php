@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     public function getAll(){
-        $cats = Category::select('name')->get();
+        $cats = Category::select('name')->orderBy('name')->get();
         return $cats;
     }
 }

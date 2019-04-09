@@ -16,7 +16,7 @@ class RecipeController extends Controller
             }
         } else if ($filter == 'author'){
             if($category != 'All'){
-                $recipes = Recipe::where('author', $param)->where('category', $category)->paginate(6);
+                $recipes = Recipe::where('author', $param)->where('categories', $category)->paginate(6);
 
             } else {
                 $recipes = Recipe::where('author', $param)->paginate(6);
