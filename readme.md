@@ -2,6 +2,17 @@
 
 ## Made With:
 
+### lepetitfoudie.com
+
+lepetitfoudie.com is a website for amateur home cooks to store their recipes and explore other's.
+As of now the functionalities include:
+
+-   Authentification
+-   Create/Read/Update/Delete recipes
+-   Filter recipes by categories
+
+### Technologies
+
 -   Laravel
 
 The Laravel functionalities are used mainly for the backend, in order to query the database with API routes (/routes/api.php) and controllers (/app/Http/Controllers).
