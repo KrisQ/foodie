@@ -1,4 +1,4 @@
-# Foodie Project
+# Le petit Foudie Project
 
 ### lepetitfoudie.com
 
