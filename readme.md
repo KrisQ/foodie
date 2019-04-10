@@ -32,7 +32,7 @@ https://laravel.com/docs/5.8/
 
 -   Vue.js
 
-The frontend javascript framework used in this project, Axios is used to call APIs in the backend.
+The frontend javascript framework used in this project is Vue.js. Axios is used to call APIs in the backend.
 This is usually the prefered frontend framework for Laravel developers as it is available out of the box.
 Using Vue.js introduced difficulties with authentification since it is an SPA, so JSON Web Tokens (JWTs) are used for user auth.
 
